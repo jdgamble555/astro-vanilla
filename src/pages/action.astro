@@ -1,0 +1,30 @@
+---
+import Button from "../components/button.astro";
+import MainLayout from "../layouts/main-layout.astro";
+import { actions } from "astro:actions";
+---
+
+<MainLayout title="Actions">
+  <form name="greetingForm" action={actions.greet} class="flex flex-col gap-3">
+    <input
+      class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+      name="name"
+      placeholder="Your name..."
+    />
+
+    <Button color="orange" type="submit">Get greeting</Button>
+  </form>
+</MainLayout>
+
+<script>
+  import { actions } from "astro:actions";
+
+  const form = document.forms.namedItem("greetingForm")!;
+
+  form.onsubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const { data, error } = await actions.greet(formData);
+    if (!error) alert(data);
+  };
+</script>

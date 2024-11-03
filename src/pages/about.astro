@@ -1,8 +1,11 @@
 ---
 const date = new Date().toLocaleString();
+const url = new URL('/api/random', Astro.url).toString();
+const results = await fetch(url).then((r) => r.json());
 import MainLayout from "../layouts/main-layout.astro";
 ---
 
 <MainLayout title="About">
   <h3>The current date is {date}.</h3>
+  <h3>A random string from the server for you is "{results.random}".</h3>
 </MainLayout>
