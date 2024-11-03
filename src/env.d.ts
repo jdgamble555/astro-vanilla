@@ -2,7 +2,8 @@
 
 declare global {
     interface Window {
-        increment: () => void
+        increment2: () => void
+        increment3: () => void
     }
 }
 

@@ -1,17 +1,12 @@
 ---
-import Home from "../components/home.astro";
+import Counter1 from "../components/counter1.astro";
+import Counter2 from "../components/counter2.astro";
+import Counter3 from "../components/counter3.astro";
+import MainLayout from "../layouts/main-layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-		<Home />
-	</body>
-</html>
+<MainLayout title="Home">
+  <Counter1 />
+  <Counter2 />
+  <Counter3 />
+</MainLayout>

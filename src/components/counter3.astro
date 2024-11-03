@@ -1,0 +1,22 @@
+<p>Counter #3: <span id="counterSpan3">0</span></p>
+<button id="counterButton3">Increment</button>
+
+<script>
+  import { sharedCounter } from "./use-counter";
+
+  const { increment, atomCounter } = sharedCounter;
+
+  const counterSpan3 = document.getElementById("counterSpan3")!;
+  const counterButton3 = document.getElementById("counterButton3")!;
+
+  const counterUnsubscribe = atomCounter.subscribe((count) => {
+    counterSpan3.textContent = count.toString();
+  });
+
+  counterButton3.addEventListener("click", increment);
+
+  window.addEventListener("beforeunload", () => {
+    counterUnsubscribe();
+    counterButton3.removeEventListener("click", increment);
+  });
+</script>

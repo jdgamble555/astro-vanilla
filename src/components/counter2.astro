@@ -1,0 +1,16 @@
+<p>Counter #2: <span id="counterSpan2">0</span></p>
+<button onclick="increment2()">Increment</button>
+
+<script>
+  import { sharedCounter } from "./use-counter";
+
+  const { increment, atomCounter } = sharedCounter;
+
+  const counterSpan = document.getElementById("counterSpan2")!;
+
+  window.onbeforeunload = atomCounter.subscribe((count) => {
+    counterSpan.textContent = count.toString();
+  });
+
+  window.increment2 = increment;
+</script>

@@ -1,23 +1,21 @@
-<p>Current Count: <span id="counterSpan">0</span></p>
+<p>Counter #1: <span id="counterSpan">0</span></p>
 <button id="counterButton">Increment</button>
 
 <script>
   import { useCounter } from "./use-counter";
 
-  const { atomCounter, increment } = useCounter();
+  const counter = useCounter();
 
   const counterSpan = document.getElementById("counterSpan")!;
   const counterButton = document.getElementById("counterButton")!;
 
-  const unsubscribe = atomCounter.subscribe((count) => {
+  window.onbeforeunload = counter.atomCounter.subscribe((count) => {
     counterSpan.textContent = count.toString();
   });
 
-  counterButton.onclick = increment;
+  counterButton.onclick = counter.increment;
 
   /*window.increment = () => {
     counter.set(counter.get() + 1);
   };*/
-
-  window.onbeforeunload = unsubscribe;
 </script>

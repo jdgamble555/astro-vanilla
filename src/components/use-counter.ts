@@ -12,3 +12,5 @@ export const useCounter = () => {
     };
 };
 
+
+export const sharedCounter = useCounter();
