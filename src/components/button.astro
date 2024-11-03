@@ -1,0 +1,10 @@
+---
+const { color = "purple", ...rest } = Astro.props;
+---
+
+<button
+  class={"border p-3 rounded-xl bg-" + color + "-500 text-white"}
+  {...rest}
+>
+  <slot />
+</button>

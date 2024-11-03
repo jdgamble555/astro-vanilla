@@ -1,5 +1,9 @@
+---
+import Button from "./button.astro";
+---
+
 <p>Counter #1: <span id="counterSpan">0</span></p>
-<button id="counterButton">Increment</button>
+<Button color="green" id="counterButton">Increment</Button>
 
 <script>
   import { useCounter } from "./use-counter";
@@ -14,8 +18,4 @@
   });
 
   counterButton.onclick = counter.increment;
-
-  /*window.increment = () => {
-    counter.set(counter.get() + 1);
-  };*/
 </script>

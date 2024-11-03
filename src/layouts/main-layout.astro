@@ -1,4 +1,6 @@
 ---
+import Navigation from "./navigation.astro";
+
 const { title } = Astro.props;
 ---
 
@@ -11,7 +13,10 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <h1>{title}</h1>
-    <slot />
+    <main class="mt-5 flex flex-col items-center w-full">
+      <h1 class="text-3xl my-3">{title}</h1>
+      <slot />
+      <Navigation />
+    </main>
   </body>
 </html>
